@@ -116,7 +116,67 @@ export default function Page() {
         </div>
       </nav>
 
-      {mobileNav && <div className="fixed inset-0 z-[80] bg-[#FFF0F5] p-8"><button className="mb-10" onClick={() => setMobileNav(false)}><X size={28} /></button>{["Services", "Gallery", "Academy", "Reviews", "Contact"].map((n) => <a key={n} className="font-dancing mb-2 block text-5xl" href={`#${n.toLowerCase()}`}>{n}</a>)}</div>}
+      {mobileNav && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[80] overflow-hidden bg-[#FFF0F5] px-5 pb-8 pt-6"
+        >
+          <div className="pointer-events-none absolute -left-16 -top-20 h-56 w-56 rounded-full bg-[#F5B8CF]/60 blur-2xl" />
+          <div className="pointer-events-none absolute -right-16 bottom-24 h-52 w-52 rounded-full bg-[#C8A8D8]/45 blur-2xl" />
+
+          <div className="relative z-10 mx-auto flex h-full max-w-[460px] flex-col">
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <p className="font-dancing text-4xl leading-none text-[#D4547A]">Muskan</p>
+                <p className="font-cormorant text-xs tracking-[0.18em] text-[#B07A8A]">BEAUTY SALON AND ACADEMY</p>
+              </div>
+              <button
+                aria-label="Close menu"
+                className="grid h-11 w-11 place-items-center rounded-full border border-[#D4547A]/30 bg-white/80 text-[#6B3A4E]"
+                onClick={() => setMobileNav(false)}
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="soft-card bg-white/80 p-3">
+              {["Services", "Gallery", "Academy", "Reviews", "Contact"].map((n, i) => (
+                <motion.a
+                  key={n}
+                  href={`#${n.toLowerCase()}`}
+                  onClick={() => setMobileNav(false)}
+                  initial={{ opacity: 0, x: -22 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.06 * i + 0.05 }}
+                  className="group mb-2 flex items-center justify-between rounded-2xl border border-[#F0D0DC] bg-[#FFFAF8] px-4 py-3 last:mb-0"
+                >
+                  <span className="font-playfair text-[40px] leading-none text-[#2D1420]">{n}</span>
+                  <span className="font-cormorant text-lg text-[#B07A8A] transition group-hover:text-[#D4547A]">0{i + 1}</span>
+                </motion.a>
+              ))}
+            </div>
+
+            <div className="mt-auto grid gap-3 pt-6">
+              <a
+                href="#contact"
+                onClick={() => setMobileNav(false)}
+                className="pill w-full bg-[#D4547A] py-3 text-center font-cormorant text-2xl text-white"
+              >
+                Book Appointment
+              </a>
+              <a
+                href="https://wa.me/918090729585"
+                target="_blank"
+                className="pill w-full border border-[#25D366] bg-[#25D366]/90 py-3 text-center font-cormorant text-2xl text-white"
+              >
+                WhatsApp Quick Chat
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       <section className="bg-pattern-rose relative min-h-screen overflow-hidden pt-[72px]">
         <div className="h-11 overflow-hidden bg-gradient-to-r from-[#D4547A] via-[#E87FA8] to-[#D4547A]"><div className="marquee flex w-[200%] gap-8 whitespace-nowrap py-2 font-cormorant text-xl text-white md:text-2xl"><span>Bridal Makeup * Hair Styling * Skin Care * Beauty Academy * Ballia UP *</span><span>Bridal Makeup * Hair Styling * Skin Care * Beauty Academy * Ballia UP *</span></div></div>
