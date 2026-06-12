@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Dancing_Script, Great_Vibes, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import ReferralBanner from "./components/ReferralBanner";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -36,7 +37,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${greatVibes.variable} ${cormorant.variable} ${dancing.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ReferralBanner />
+      </body>
     </html>
   );
 }
